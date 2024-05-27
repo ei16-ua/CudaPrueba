@@ -13,6 +13,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{18DE8B9D-7200-4197-8652-033F8E80AF86}</ProjectGuid>
     <RootNamespace>CudaPrueba</RootNamespace>
+    <ProjectName>simutorno</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
