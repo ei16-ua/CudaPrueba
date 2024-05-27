@@ -1,43 +1,20 @@
-/*----------------------------------------------------------------------------*/
-/*  FICHERO:       simutorno.cu									          */
-/*  AUTOR:         Antonio Jimeno											  */
-/*													                          */
-/*  RESUMEN												                      */
-/*  ~~~~~~~												                      */
-/* Ejercicio grupal para simulaci?n del movimiento de una herramienta         */
-/* tipo torno utilizando GPUs                                                 */
-/*----------------------------------------------------------------------------*/
-
-// includes, system
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 #include <math.h>
 #include <assert.h>
-
 #include "simutorno.h"
-
-// includes, project
 #include <cuda.h>
 #include <cuda_runtime.h>
 #include <device_launch_parameters.h>
-
-
 #include <Windows.h>
-
-
 
 #define ERROR_CHECK { cudaError_t err; if ((err = cudaGetLastError()) != cudaSuccess) { printf("CUDA error: %s, line %d\n", cudaGetErrorString(err), __LINE__);}}
 
 typedef LARGE_INTEGER timeStamp;
 double getTime();
 
-/*----------------------------------------------------------------------------*/
-/*  FUNCION A PARALELIZAR  (versi?n secuencial-CPU)  				          */
-/*	Simula el movimiento de una superficie 3D en una m?quina tipo torno       */
-/*  Realiza pasossim rotaciones de la superficie sobre el eje X de rotacion   */
-/*  El giro se da con una definici?n de PuntosVueltaHelicoide cada 360?       */
-/*----------------------------------------------------------------------------*/
+
 int SimulacionTornoCPU(int pasossim, int vtotal, int utotal)
 {
 	/* Parametros de mecanizado */
@@ -67,35 +44,15 @@ int SimulacionTornoCPU(int pasossim, int vtotal, int utotal)
 	return OKSIM;
 }
 
-// ---------------------------------------------------------------
-// ---------------------------------------------------------------
-// FUNCION A IMPLEMENTAR POR EL GRUPO (paralelizaci?n de la anterior)
-// ---------------------------------------------------------------
-// ---------------------------------------------------------------
-
-int SimulacionTornoGPU(int pasossim, int vtotal, int utotal)
-{
-	return OKSIM;
-}
-// ---------------------------------------------------------------
-// ---------------------------------------------------------------
-// ---------------------------------------------------------------
-// ---------------------------------------------------------------
-// ---------------------------------------------------------------
+int SimulacionTornoGPU(int pasossim, int vtotal, int utotal){ return OKSIM;}
 
 // Declaraciones adelantadas de funciones
 int SimulacionTornoCPU(int pasossim, int vtotal, int utotal);
 int LeerSuperficie(const char* fichero, int& vtotal, int& utotal);
 
-
-
-////////////////////////////////////////////////////////////////////////////////
-//PROGRAMA PRINCIPAL
-////////////////////////////////////////////////////////////////////////////////
 void runTest(int argc, char** argv)
 {
-
-
+	/* Variables de tiempo */
 	double gpu_start_time, gpu_end_time;
 	double cpu_start_time, cpu_end_time;
 
@@ -176,8 +133,7 @@ void runTest(int argc, char** argv)
 	return;
 }
 
-int
-main(int argc, char** argv)
+int main(int argc, char** argv)
 {
 	runTest(argc, argv);
 	getchar();
@@ -193,13 +149,13 @@ double getTime()
 	return double(start.QuadPart) / double(dwFreq.QuadPart);
 }
 
-
-
-/*----------------------------------------------------------------------------*/
-/*	Funci?n:  LeerSuperficie(char *fichero)						              */
-/*													                          */
-/*	          Lee los datos de la superficie de un fichero con formato .FOR   */
-/*----------------------------------------------------------------------------*/
+/// <summary>
+/// Leer el fichero de superficie .for
+/// </summary>
+/// <param name="fichero"></param>
+/// <param name="vtotal"></param>
+/// <param name="utotal"></param>
+/// <returns></returns>
 int LeerSuperficie(const char* fichero, int& vtotal, int& utotal)
 {
 	int i, j, count;		/* Variables de bucle */
