@@ -34,9 +34,7 @@ double PasoHelicoide;
 int PuntosVueltaHelicoide;
 
 
-/*============================================================================ */
-/* Funciones de tratamiento de memoria							 */
-/*============================================================================ */
+//Funciones de tratamiento de memoria
 void BorrarSuperficie(void)
 {
 	int i;
