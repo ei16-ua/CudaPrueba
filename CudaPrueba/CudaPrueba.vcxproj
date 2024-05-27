@@ -77,7 +77,7 @@
     </CudaCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <CudaCompile Include="prueba.cu" />
+    <CudaCompile Include="simutorno.cu" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="simutorno.h" />

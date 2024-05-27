@@ -28,7 +28,7 @@ int SimulacionTornoCPU(int pasossim, int vtotal, int utotal)
             for (int i = 0; i < pasossim; i++) // Itera sobre los pasos de la simulación
             {
                 // Calcula la nueva posición del punto rotado (solo interesa la coordenada y)
-                double py = S.Buffer[v][u].y * cos(angle * M_PI / 180) - S.Buffer[v][u].z * sin(angle * M_PI / 180);
+                double py = S.Buffer[v][u].y * cos(angle * M_PI_180) - S.Buffer[v][u].z * sin(angle * M_PI_180);
                 // Si la nueva posición y es menor que la mínima, se actualiza AvanceMin
                 if (py < AvanceMin)
                 {
